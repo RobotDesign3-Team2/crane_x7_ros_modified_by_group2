@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <name>crane_x7_examples</name>
+  <version>0.0.0</version>
+  <description>examples of CRANE-X7 ROS package</description>
+
+  <maintainer email="shop@rt-net.jp">RT Corporation</maintainer>
+  <author email="tiryoh@gmail.com">Daisuke Sato</author>
+  <author email="s19c1091dk@s.chibakoudai.jp">Hiroki Noguchi</author>
+  <author email="s19c1034bq@s.chibakoudai.jp">Hayato Kanbe</author>
+  <author email="s19c1082ar@s.chibakoudai.jp">Kaito Toda</author>
+  <author email="s19c1009nu@s.chibakoudai.jp">Tubasa Ito</author>
+  <author email="s19c1028qg@s.chibakoudai.jp">Naoki Kaneko</author>
+  <author email="s19c1077rh@s.chibakoudai.jp">Syuta Tanabe</author>
+
+  <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>crane_x7_moveit_config</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>crane_x7_moveit_config</run_depend>
+  <run_depend>moveit_commander</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>joy</run_depend>
+
+  <export>
+
+  </export>
+</package>

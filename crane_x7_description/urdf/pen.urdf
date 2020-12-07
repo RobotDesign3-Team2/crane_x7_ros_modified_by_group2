@@ -1,0 +1,32 @@
+<?xml version="1.0"?> 
+
+<!-- このプログラムはハンドの持ち手に筆を出現させるプログラムです。
+[crane_x7_xacro]のほうにも一文追加しないと筆は出力しないので注意してください。
+そのへんは[crane_x7_xacro]のほうに記載しておきましたのでそちらをご参照ください。
+
+筆の先端からハンドの持ち手までの距離は75mmほどになっています。
+
+-->
+
+<robot name="pen">
+	<link name="pen_link">
+		<inertial>
+			<mass value="1e-6"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+
+		<visual>
+			<geometry>
+				<mesh filename="package://crane_x7_description/meshes/pencase/coordinate.dae"/>
+			</geometry>
+		</visual>
+	</link>
+ 
+	<joint name="pen_joint" type="fixed">
+		<parent link="crane_x7_gripper_base_link"/>
+		<child link="pen_link"/>
+		<origin xyz="0 0.14 0.083" rpy="0 0 -1.570796"/>
+		<!--1.570796326795/-->
+  	</joint>
+</robot>
