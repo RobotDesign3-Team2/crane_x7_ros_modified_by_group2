@@ -16,6 +16,7 @@ from geometry_msgs.msg import Quaternion
 import rosnode
 from tf.transformations import quaternion_from_euler
 import csv
+from std_msgs.msg import Float64
 
 def follow_circular_path(
     fl, radius=0.1,
@@ -40,6 +41,9 @@ def follow_circular_path(
     path, fraction = arm.compute_cartesian_path(way_points, eef_step, jump_threshold, avoid_collisions)
     arm.execute(path)
 
+#def callback(message):
+ #   print(message.data)
+
 def main():
 
     fl = ["KO.csv","RO.csv"]
@@ -56,6 +60,9 @@ def main():
     arm.go()
 
 if __name__ == '__main__':
+  #  rospy.init_node('JOIN2')
+   # sub = rospy.Subscriber('UnixTime', Float64 , callback)
+    #rospy.spin()
     rospy.init_node("cartesian_path_example")
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
