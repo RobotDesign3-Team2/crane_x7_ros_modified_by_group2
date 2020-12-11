@@ -21,7 +21,7 @@ def detect_red_color(img):
     # 赤色領域のマスク（255：赤色、0：赤色以外）    
     mask = mask1 + mask2
 
-    _,contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     areas = np.array(list(map(cv2.contourArea,contours)))
 
     if len(areas) == 0 or np.max(areas) / (h*w) < 0.005:
@@ -36,28 +36,33 @@ def detect_red_color(img):
         x = int(result["m10"]/result["m00"])
         y = int(result["m01"]/result["m00"])
         return (x,y)
+
 """
-def test():
 # 入力画像の読み込み
-    img = cv2.imread("test1.png")
+    img = cv2.imread("test.png")
 
 # 色検出
     pos= detect_red_color(img)
-        if pos is not None:
-            cv2.circle(img,pos,10,(0,255,255),-1)
+    if pos is not None:
+        cv2.circle(img,pos,10,(0,255,0),-1)
 
 # 結果を出力
-    cv2.imwrite("result.png",img)
+    cv2.imwrite("result",img)
 """
 
-def main():
-    # webカメラを扱うオブジェクトを取得
-    cap = cv2.VideoCapture(0)
-    while True:
-        ret,frame = cap.read()
+# webカメラを扱うオブジェクトを取得
+cap = cv2.VideoCapture(0)
+flag = True
+o_pos = 0,0
+while flag:
+    ret,frame = cap.read()
 
-        if ret is False:
-            print("cannot read image")
-            continue
-        pos = detect_red_color(frame)
-        print(pos)
+    if ret is False:
+        print("cannot read image")
+        continue
+    pos = detect_red_color(frame)
+
+    print(pos)
+    if pos == o_pos:
+        flag = False
+    o_pos = pos
