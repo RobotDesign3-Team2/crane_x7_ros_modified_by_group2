@@ -2,7 +2,7 @@
 ## coding: UTF-8
 
 import rospy
-from std_msgs.msg import String # ROS通信で文字列を取得できるようにstd_msgsというパッケージからStringという型を取得
+from std_msgs.msg import Float64 # ROS通信で文字列を取得できるようにstd_msgsというパッケージからStringという型を取得
 from datetime import datetime
 
 cot = 10
