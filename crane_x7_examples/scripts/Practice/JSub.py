@@ -135,7 +135,7 @@ def main():
     print(x)
     print(y)
     Cx = (160 - x.data)/320
-    Cy = (120 - y.data)/240
+    Cy = -(120 - y.data)/240
     point1.x = 0.2 + Cx
     point1.y = -0.18 + Cy
     rospy.sleep(1.0)
