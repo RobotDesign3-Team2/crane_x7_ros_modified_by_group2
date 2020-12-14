@@ -134,10 +134,14 @@ def main():
 #------------
     print(x)
     print(y)
-    Cx = (-160 + x.data)/3200
-    Cy = (-120 + y.data)/2400
-    point1.x = 0.2 + Cx
-    point1.y = -0.18 + Cy
+    Cx = -320 + x.data
+    Cy = 240 - x.data
+    #Cx = (-160 + x.data)/3200
+    Ccx = point1.z * math.tan(math.radians(18)) * Cx/320
+    Ccy = point1.z * math.tan(math.radians(34.7)) * Cy/240
+    #Cy = (-120 + y.data)/2400
+    point1.x = 0.2 + Ccx
+    point1.y = -0.18 + Ccy
     rospy.sleep(1.0)
 #筆つかみ初期位置に移動
     move_arm(3.14/2)
