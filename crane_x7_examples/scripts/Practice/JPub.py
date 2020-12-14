@@ -23,8 +23,8 @@ if __name__ == '__main__':
     pub = rospy.Publisher('xaxis', Float64, queue_size=1)#送るデータの型指定的な
     pub2 = rospy.Publisher('yaxis', Float64, queue_size=1)#送るデータの型指定的な
     rate = rospy.Rate(10)#送る周波数を決めている、センサの場合いらない可能性
-    x = 0.001
-    y = 0.001
+    x = 300
+    y = 20
     while not rospy.is_shutdown():
         pub.publish(x)#x座標を送る
         pub2.publish(y)#y座標を送る
