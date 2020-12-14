@@ -5,7 +5,7 @@ import rospy
 import cv2
 import numpy as np
 from std_msgs.msg import String
-from std_msgs.msg import Int32
+from std_msgs.msg import Float64MultiArray
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
 from cv_bridge import CvBridge, CvBridgeError
@@ -18,6 +18,7 @@ class image_converter:
 
         # 赤色の検出
     def callback(self, data):
+        pub = rospy.Publisher("red_size", Float64MultiArray, queue_size=1)
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except CvBridgeError as e:
@@ -39,7 +40,10 @@ class image_converter:
         # 赤色領域のマスク（255：赤色、0：赤色以外）    
         mask = mask1 + mask2
 
-        contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+        # 画像配列のビット毎の倫理席。マスク画像だけが抽出される。                               
+        cv_image2  = cv2.bitwise_and(cv_image, cv_image, mask = mask)
+
+        labels,contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
         areas = np.array(list(map(cv2.contourArea,contours)))
 
         for i in range(0, len(contours)):
@@ -62,17 +66,21 @@ class image_converter:
                     result = cv2.moments(contours[max_idx])
                     x = int(result["m10"]/result["m00"])
                     y = int(result["m01"]/result["m00"])
-                    pub.publish(x,y)
+                    size = x,y
+                    array_forPublish = Float64MultiArray(data=size)
+                    pub.publish(array_forPublish)
         #ウインドウのサイズを変更                                                               
+        cv_half_image = cv2.resize(cv_image,   (0,0),fx=0.5, fy=0.5)
         cv_half_image = cv2.resize(cv_image,   (0,0),fx=0.5, fy=0.5)
 
       # ウインドウ表示                                                                         
         cv2.imshow("Origin Image", cv_image)
+        cv2.imshow("Red Image", cv_image2)
         cv2.waitKey(3)
 
 def main(args):
-    ic = image_converter()
     rospy.init_node('image_converter', anonymous=True)
+    ic = image_converter()
     try:
       rospy.spin()
     except KeyboardInterrupt:
@@ -100,5 +108,5 @@ def main():
 if __name__ == '__main__':
     sub = rospy.Subscriber("/red_color", Image, main)
     main(sys.argv)
-    pub = rospy.Publisher("red_rocate", Int32, queue_size=1)
+    pub = rospy.Publisher("red_rocate", Float64MultiArray, queue_size=1)
     rospy.spin()
