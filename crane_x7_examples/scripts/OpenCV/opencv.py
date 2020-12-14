@@ -49,7 +49,7 @@ class image_converter:
         for i in range(0, len(contours)):
             if len(contours[i]) > 0:
 
-              # remove small objects
+                # remove small objects
                 if cv2.contourArea(contours[i]) < 500:
                     continue
 
@@ -59,16 +59,19 @@ class image_converter:
                     # 見つからなかったらNoneを返す
                     print("the area is too small")
                     return None
-                else:
+                elif np.max(areas) >= 1000:
                 # 面積が最大の塊の重心を計算し返す
                     max_idx = np.argmax(areas)
                     max_area = areas[max_idx]
                     result = cv2.moments(contours[max_idx])
-                    x = int(result["m10"]/result["m00"])
-                    y = int(result["m01"]/result["m00"])
+                    x = float(result["m10"]/result["m00"])
+                    y = float(result["m01"]/result["m00"])
                     size = x,y
+                    print(size)
                     array_forPublish = Float64MultiArray(data=size)
                     pub.publish(array_forPublish)
+                else:
+                    print("the area is too small")
         #ウインドウのサイズを変更                                                               
         cv_half_image = cv2.resize(cv_image,   (0,0),fx=0.5, fy=0.5)
         cv_half_image = cv2.resize(cv_image,   (0,0),fx=0.5, fy=0.5)
@@ -77,6 +80,7 @@ class image_converter:
         cv2.imshow("Origin Image", cv_image)
         cv2.imshow("Red Image", cv_image2)
         cv2.waitKey(3)
+        
 
 def main(args):
     rospy.init_node('image_converter', anonymous=True)
