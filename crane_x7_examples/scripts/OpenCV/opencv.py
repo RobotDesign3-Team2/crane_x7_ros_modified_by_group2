@@ -43,7 +43,7 @@ class image_converter:
         # 画像配列のビット毎の倫理席。マスク画像だけが抽出される。                               
         cv_image2  = cv2.bitwise_and(cv_image, cv_image, mask = mask)
 
-        labels,contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+        contours,hierarchy = cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
         areas = np.array(list(map(cv2.contourArea,contours)))
 
         for i in range(0, len(contours)):
