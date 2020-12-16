@@ -10,6 +10,7 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
 from cv_bridge import CvBridge, CvBridgeError
 from std_msgs.msg import Float64#Flont64を使うと宣言.kaneko
+
 class image_converter:
     def __init__(self):
         self.image_pub = rospy.Publisher("image_topic", Image, queue_size=1)
@@ -62,7 +63,7 @@ class image_converter:
                     result = cv2.moments(contours[max_idx])
                     x = int(result["m10"]/result["m00"])
                     y = int(result["m01"]/result["m00"])
-                    pub.publish(x)#x座標を送る.kaneko
+                    pub1.publish(x)#x座標を送る.kaneko
                     pub2.publish(y)#y座標を送る.kaneko
         #ウインドウのサイズを変更                                                               
         cv_half_image = cv2.resize(cv_image,   (0,0),fx=0.5, fy=0.5)
@@ -79,25 +80,7 @@ def main(args):
     except KeyboardInterrupt:
       print("Shutting down")
     cv2.destroyAllWindows()
-"""
-def main():
-# webカメラを扱うオブジェクトを取得
-    cap = cv2.VideoCapture(0)
-    flag = True
-    o_pos = 0,0
-    while flag:
-        ret,frame = cap.read()
 
-        if ret is False:
-            print("cannot read image")
-            continue
-        pos = detect_red_color(frame)
-
-        print(pos)
-        if pos == o_pos:
-            flag = False
-        o_pos = pos
-"""
 if __name__ == '__main__':
     sub = rospy.Subscriber("/red_color", Image, main)
     pub1 = rospy.Publisher('xaxis', Float64, queue_size=1)#送るデータの型指定的な.kaneko

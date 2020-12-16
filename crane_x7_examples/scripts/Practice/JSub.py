@@ -130,9 +130,9 @@ def main():
 #検知待機時間   
     rospy.sleep(5.0)
 #topic通信---  
-    x,y = rospy.wait_for_message("red_size",Float64MultiArray)
-#    x = rospy.wait_for_message("xaxis", Float64)
-#    y = rospy.wait_for_message("yaxis", Float64) 
+#    x,y = rospy.wait_for_message("red_size",Float64MultiArray)
+    x = rospy.wait_for_message("red_x", Float64)
+    y = rospy.wait_for_message("red_y", Float64) 
 #------------
     print(x)
     print(y)

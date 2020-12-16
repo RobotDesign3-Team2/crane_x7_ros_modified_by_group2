@@ -19,8 +19,6 @@ class image_converter:
 
         # 赤色の検出
     def callback(self, data):
-        pub = rospy.Publisher("red_x", Float64MultiArray, queue_size=1)
-        pub2 = rospy.Publisher("red_y", Float64MultiArray, queue_size=1)
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except CvBridgeError as e:
@@ -68,8 +66,8 @@ class image_converter:
                     result = cv2.moments(contours[max_idx])
                     x = float(result["m10"]/result["m00"])
                     y = float(result["m01"]/result["m00"])
-                    pub.publish(x)
-                    pub.publish(y)
+                    pub1.publish(x)
+                    pub2.publish(y)
                 else:
                     print("the area is too small")
         #ウインドウのサイズを変更                                                               
@@ -92,8 +90,9 @@ def main(args):
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
+
+    pub1 = rospy.Publisher("red_x", Float64, queue_size=1)
+    pub2 = rospy.Publisher("red_y", Float64, queue_size=1)
     sub = rospy.Subscriber("/red_color", Image, main)
     main(sys.argv)
-    pub = rospy.Publisher("red_x", Float64, queue_size=1)
-    pub2 = rospy.Publisher("red_y", Float64, queue_size=1)
     rospy.spin()
