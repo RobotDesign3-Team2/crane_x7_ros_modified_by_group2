@@ -90,27 +90,9 @@ def main(args):
     except KeyboardInterrupt:
       print("Shutting down")
     cv2.destroyAllWindows()
-"""
-def main():
-# webカメラを扱うオブジェクトを取得
-    cap = cv2.VideoCapture(0)
-    flag = True
-    o_pos = 0,0
-    while flag:
-        ret,frame = cap.read()
 
-        if ret is False:
-            print("cannot read image")
-            continue
-        pos = detect_red_color(frame)
-
-        print(pos)
-        if pos == o_pos:
-            flag = False
-        o_pos = pos
-"""
 if __name__ == '__main__':
     sub = rospy.Subscriber("/red_color", Image, main)
     main(sys.argv)
-    pub = rospy.Publisher("red_rocate", Float64MultiArray, queue_size=1)
+    pub = rospy.Publisher("red_size", Float64MultiArray, queue_size=1)
     rospy.spin()
