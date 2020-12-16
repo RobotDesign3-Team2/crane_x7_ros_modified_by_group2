@@ -18,6 +18,7 @@ import rosnode
 from tf.transformations import quaternion_from_euler
 import csv
 from std_msgs.msg import Float64
+from std_msgs.msg import Float64MultiArray
 
 def move_max_velocity(value):#速度調節関数
     arm.set_max_velocity_scaling_factor(value)#速度を調整する部分()の中に値を入れると変更出来る
@@ -129,8 +130,9 @@ def main():
 #検知待機時間   
     rospy.sleep(5.0)
 #topic通信---  
-    x = rospy.wait_for_message("xaxis", Float64)
-    y = rospy.wait_for_message("yaxis", Float64) 
+    x,y = rospy.wait_for_message("red_size",Float64MultiArray)
+#    x = rospy.wait_for_message("xaxis", Float64)
+#    y = rospy.wait_for_message("yaxis", Float64) 
 #------------
     print(x)
     print(y)
