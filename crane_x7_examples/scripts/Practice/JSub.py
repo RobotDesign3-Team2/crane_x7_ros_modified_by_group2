@@ -138,9 +138,13 @@ def main():
     print(y)
     Cx = -320 + x.data
     Cy = 240 - x.data
+    rad_x = 18 
+    rad_y = rad_x * 1.13
     #Cx = (-160 + x.data)/3200
-    Ccx = point1.z * math.tan(math.radians(18)) * Cx/320
-    Ccy = point1.z * math.tan(math.radians(34.7)) * Cy/240
+    Ccx = point1.z * math.tan(math.radians(rad_x)) * Cx/320
+    Ccy = point1.z * math.tan(math.radians(rad_y)) * Cy/240
+    print(Ccx)
+    print(Ccy)
     #Cy = (-120 + y.data)/2400
     point1.x = 0.2 + Ccx
     point1.y = -0.18 + Ccy
