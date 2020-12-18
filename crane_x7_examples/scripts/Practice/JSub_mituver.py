@@ -141,6 +141,7 @@ def main():
     arm.go()
 #検知初期位置に移動 
     move_arm2(3.14)
+    move_max_velocity(0.1)
     move_arm(3.14)
 #検知待機時間   
     rospy.sleep(1.0)
