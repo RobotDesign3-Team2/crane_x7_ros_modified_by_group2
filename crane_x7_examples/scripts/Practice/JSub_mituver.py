@@ -143,7 +143,7 @@ def main():
     move_arm2(3.14)
     move_arm(3.14)
 #検知待機時間   
-    rospy.sleep(5.0)
+    rospy.sleep(1.0)
 #topic通信---  
 #    x,y = rospy.wait_for_message("red_size",Float64MultiArray)
     x = rospy.wait_for_message("red_x", Float64)
