@@ -110,6 +110,20 @@ def move_arm(Rr):#座標に移動させる関数　Rrを変更でアームの向
     arm.set_pose_target(target_pose)  # 目標ポーズ設定
     arm.go()  # 実行
 
+def move_arm2(Rr):#座標に移動させる関数　Rrを変更でアームの向き変更
+   # move_max_velocity(move)#速度調整関数
+    target_pose = geometry_msgs.msg.Pose()
+    target_pose.position.x = point1.x+0.1#x代入
+    target_pose.position.y = point1.y#y代入
+    target_pose.position.z = 0.3#z代入
+    q = quaternion_from_euler(Rr, 0.0, 3.14/2.0)
+    target_pose.orientation.x = q[0]
+    target_pose.orientation.y = q[1]
+    target_pose.orientation.z = q[2]
+    target_pose.orientation.w = q[3]
+    arm.set_pose_target(target_pose)  # 目標ポーズ設定
+    arm.go()  # 実行
+
 def Nura():#ぬらすための関数
     arm.set_named_target("home") #homeに戻らないと挙動がおかしくなるので
     arm.go()
@@ -126,7 +140,8 @@ def main():
     arm.set_named_target("home")
     arm.go()
 #検知初期位置に移動 
-    move_arm(3.14) 
+    move_arm2(3.14)
+    move_arm(3.14)
 #検知待機時間   
     rospy.sleep(5.0)
 #topic通信---  
