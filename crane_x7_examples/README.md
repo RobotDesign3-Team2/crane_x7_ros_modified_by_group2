@@ -1,7 +1,8 @@
 
 # crane_x7_example
 
-このパッケージは、オリジナルである<https://github.com/rt-net/crane_x7_ros/tree/master/crane_x7_examples> を千葉工業大学未来ロボティクス学科の講義内グループ2班が変更を加えたものです。
+このパッケージは、オリジナルである<https://github.com/rt-net/crane_x7_ros/tree/master/crane_x7_examples>を千葉工業大学未来ロボティクス学科の講義内グループ2班が変更を加えたものです。
+<br>
 このパッケージにより「crane_x7に筆を使って、文字を書かせる」ことができます。
 
 ## システムの起動方法
