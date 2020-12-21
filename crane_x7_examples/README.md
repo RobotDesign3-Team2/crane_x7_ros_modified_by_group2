@@ -74,7 +74,7 @@ roslaunch crane_x7_gazebo crane_x7_with_table.launch
 次のコマンドでプログラムのディレクトリに移動します。
 
 ```sh
-/catkin_ws/src/crane_x7_ros/crane_x7_syuji/scripts/MOJI/MOJIcsv
+/catkin_ws/src/crane_x7_ros/crane_x7_syuji/scripts/MOJI/MOJIver2
 ```
 
 次のコマンドでプログラムを実行します。
@@ -82,10 +82,4 @@ roslaunch crane_x7_gazebo crane_x7_with_table.launch
 ```sh
 rosrun crane_x7_syuji reMcsv1.py
 ```
-
-コロナのみを書く場合は次のコマンドでプログラムを実行します。
-```sh
-rosrun crane_x7_syuji reMcsv1.py
-```
-
 
