@@ -53,7 +53,7 @@ ROSのサンプルコード集はこちらです。
 
   ```bash
   cd ~/catkin_ws/src
-  git clone https://github.com/rt-net/crane_x7_ros.git
+  git https://github.com/RobotDesign3-Team2/crane_x7_ros_modified_by_group2.git
   ```
 
 - 依存関係にあるパッケージをインストールします。
