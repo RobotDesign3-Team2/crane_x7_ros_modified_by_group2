@@ -1,5 +1,11 @@
-#!/usr/bin/env python
-#-*- coding:utf-8 -*-
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Copyright 2020 RT Corporation
+#
+# Licensed under the RT Corporation NON-COMMERCIAL LICENSE.
+# Please see https://github.com/rt-net/crane_x7_ros/blob/master/LICENSE
+# for detail.
 import sys
 import rospy
 import cv2
