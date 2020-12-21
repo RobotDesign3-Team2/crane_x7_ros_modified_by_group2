@@ -56,7 +56,7 @@ ROSのサンプルコード集はこちらです。
 
   ```bash
   cd ~/catkin_ws/src
-  git clone https://github.com/rt-net/crane_x7_ros.git
+  git https://github.com/RobotDesign3-Team2/crane_x7_ros_modified_by_group2.git
   ```
 
 - 依存関係にあるパッケージをインストールします。
@@ -124,8 +124,7 @@ CRANE-X7の起動に必要なlaunchファイルをまとめたパッケージで
 
 ### crane_x7_examples
 
-サンプルコード集です。
-使い方については[./crane_x7_examples/README.md](./crane_x7_examples/README.md)を参照してください。
+プログラム実行用のコードが入ったパッケージです。使い方については[/crane_x7_examples/README.md](https://github.com/RobotDesign3-Team2/crane_x7_ros_modified_by_group2/tree/dev/crane_x7_examples/README.md)を参照してください。
 
 ### crane_x7_gazebo
 

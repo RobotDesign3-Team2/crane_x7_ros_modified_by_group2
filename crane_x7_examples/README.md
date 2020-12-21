@@ -39,12 +39,25 @@ roslaunch crane_x7_bringup demo.launch fake_execution:=false
 まず次のディレクトリに移動します。
 
 ```sh
-/catkin_ws/src/crane_x7_ros/crane_x7_syuji/scripts/MOJI/MOJIcsv
+cd ~/catkin_ws/src/crane_x7_ros_modified_by_group2/
 ```
 
-次のコマンドを実行します。
+ブランチを移動します
 ```sh
-rosrun crane_x7_syuji Mcav4.py
+git checkout dev
+```
+
+RealSenseを起動します。
+
+```sh
+roslaunch realsense2_camera rs_camera.launch
+```
+
+紙と水入れを設置した後次のコマンドを実行します。
+
+```sh
+rosrun crane_x7_examples opencv.py
+rosrun crane_x7_examples JSub_mituver.py
 ```
 
 ### gazeboを使う場合
@@ -62,18 +75,12 @@ roslaunch crane_x7_gazebo crane_x7_with_table.launch
 次のコマンドでプログラムのディレクトリに移動します。
 
 ```sh
-/catkin_ws/src/crane_x7_ros/crane_x7_syuji/scripts/MOJI/MOJIcsv
+/catkin_ws/src/crane_x7_ros/crane_x7_syuji/scripts/MOJI/MOJIver2
 ```
 
 次のコマンドでプログラムを実行します。
 
 ```sh
-rosrun crane_x7_syuji Mcav4.py
+rosrun crane_x7_syuji reMcsv1.py
 ```
-
-コロナのみを書く場合は次のコマンドでプログラムを実行します。
-```sh
-rosrun crane_x7_syuji Mcav5.py
-```
-
 
