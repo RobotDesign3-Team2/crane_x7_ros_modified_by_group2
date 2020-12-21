@@ -121,8 +121,7 @@ CRANE-X7の起動に必要なlaunchファイルをまとめたパッケージで
 
 ### crane_x7_examples
 
-サンプルコード集です。
-使い方については[./crane_x7_examples/README.md](./crane_x7_examples/README.md)を参照してください。
+プログラム実行用のコードが入ったパッケージです。使い方については./crane_x7_examples/README.mdを参照してください。
 
 ### crane_x7_gazebo
 
