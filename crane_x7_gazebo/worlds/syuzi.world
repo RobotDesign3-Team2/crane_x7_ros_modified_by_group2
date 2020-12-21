@@ -1,6 +1,3 @@
-<!-- この[table.world]はオリジナルである[https://github.com/rt-net/crane_x7_ros/blob/master/crane_x7_gazebo/worlds/table.world]を
-千葉工業大学未来ロボティクスの講義内グループ2班が変更を加えたものです-->
-
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="CRANE-X7 with Table">
@@ -18,8 +15,16 @@
       <pose>0.29 0 0 0 0 1.5708</pose>
     </model>
 
+	<model name="water_bowl">
+	 <include>
+	  <url>model://water_bowl</url>
+	 </include>
+	 <pose>0.29 0.4 1.5 0 0 0</pose>
+	</model>
+
+
     <model name="paper">
-     <pose>0.32 0 1.5 0 0 0</pose>
+     <pose>0.30 0 1.5 0 0 0</pose>
       <link name="link">
 	<inertial>
 	 <mass>1.0</mass>
