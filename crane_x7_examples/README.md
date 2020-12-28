@@ -88,6 +88,6 @@ $ rosrun crane_x7_examples Jsub_mituver.py
 RealSenceを使用しない場合(決められたの位置に移動させたい場合)
 
 ```sh
-$ rosrun crane_x7_examples 
-$ rosrun crane_x7_examples Jsub_mituver.py
+$ rosrun crane_x7_examples JPub.py
+$ rosrun crane_x7_examples JSub_mituver.py
 ```
